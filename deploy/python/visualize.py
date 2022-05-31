@@ -38,7 +38,7 @@ def visualize_box_mask(im, results, labels, threshold=0.5):
     if isinstance(im, str):
         im = Image.open(im).convert('RGB')
     elif isinstance(im, np.ndarray):
-        im = Image.fromarray(im)
+        im = Image.fromarray(im, mode='RGB')
     if 'masks' in results and 'boxes' in results and len(results['boxes']) > 0:
         im = draw_mask(
             im, results['boxes'], results['masks'], labels, threshold=threshold)
