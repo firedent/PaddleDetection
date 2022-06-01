@@ -164,9 +164,10 @@ class Detector(object):
 
     def postprocess(self, inputs, result):
         # postprocess output of predictor
-        np_boxes_num = result['boxes_num']
-        if np_boxes_num[0] <= 0:
-            print('[WARNNING] No object detected.')
+        np_boxes_num_s = result['boxes_num']
+        for np_boxes_num in np_boxes_num_s:
+            if np_boxes_num <= 0:
+                print('[WARNNING] No object detected.')
         result = {k: v for k, v in result.items() if v is not None}
         return result
 
